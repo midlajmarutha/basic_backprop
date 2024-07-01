@@ -1,10 +1,12 @@
 from math import *
 class Grad:
-    def __init__(self,value):
+    def __init__(self,value,_children={}):
         self.value = value
+        self._children = set(_children)
+        print(self._children)
     def __add__(self,other):
         print(self.value + other.value)
-        return Grad(self.value + other.value)
+        return Grad(self.value + other.value, {other.value,self.value})
     def __sub__(self,other):
         print(self.value - other.value)
         return Grad(self.value - other.value)
